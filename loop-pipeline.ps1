@@ -54,7 +54,8 @@ else
     $has_failed = $true
 }
 
-$test = py integration_test.py 
+$test = cargo build --release
+$test = py tests/integration_test.py 
 if($?) { print_succes -text "Integration tests succeeded" }
 else 
 { 
