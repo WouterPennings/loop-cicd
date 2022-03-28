@@ -54,6 +54,15 @@ else
     $has_failed = $true
 }
 
+$test = py integration_test.py 
+if($?) { print_succes -text "Integration tests succeeded" }
+else 
+{ 
+    Write-Output $test
+    print_error -text "Integration tests succeeded"
+    $has_failed = $true
+}
+
 if($has_failed){
     print_error -text "CI/CD Pipeline has failed"
     if($to_file) {
